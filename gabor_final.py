@@ -95,7 +95,7 @@ gabor_dictionary = {}
 gabor_dictionary['gabors'] = gabor_array,bias
 
 f,x = gabor_dictionary['gabors']
-import ipdb; ipdb.set_trace()
+
 
 ## Save Dictionary ----------------------
 np.save('/Users/charlieholtz/Desktop/gabors/gabor_dictionary.npy', gabor_dictionary)
