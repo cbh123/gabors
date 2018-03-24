@@ -16,17 +16,17 @@ rot = np.array([90,-67.5,-45,-22.5,0,22.5,45,67.5])
 RF_siz = sp.arange(33,67,2)
 Div = sp.arange(4,3.15,-.05)
 
-def create_gabor(rot,RF_siz,Div,plot,num=10):
+def create_gabor(rot,RF_siz,Div,plot):
     count = 0
     numFilterSizes   = len(RF_siz)
     numSimpleFilters = len(rot)
-    lamb = (RF_siz * 2.)/Div
+    lamb = (RF_siz * 2)/Div
     sigma  = lamb * 0.8
     G      = 0.3
-    phases = [0, np.pi/2]
+    phases = [0]
 
     # Initialize Filterbank
-    alt_fb = np.zeros((65,65,1,272),dtype=np.float32)
+    alt_fb = np.zeros((65,65,1,136),dtype=np.float32)
 
 
     # for k in tqdm(range(0,numFilterSizes-1)):
@@ -50,7 +50,7 @@ def create_gabor(rot,RF_siz,Div,plot,num=10):
 
 
             # Compute filter values
-            for iPhi in range(1,3):
+            for iPhi in range(1,2):
                 for i in range(int(-1 * filtSizeL),int(filtSizeR+1)):
                     for j in range(int(-1 * filtSizeL),int(filtSizeR+1)):
 
@@ -74,9 +74,9 @@ def create_gabor(rot,RF_siz,Div,plot,num=10):
                 count += 1
 
                 if (plot):
-                    if count % num == 0:
-                        plt.imshow(f,cmap='Greys')
-                        plt.show()
+
+                    plt.imshow(f,cmap='Greys')
+                    plt.show()
 
     return (np.array(alt_fb))
 
@@ -90,12 +90,11 @@ def create_gabor(rot,RF_siz,Div,plot,num=10):
 
 ## Create Dictionary ---------------
 gabor_array = create_gabor(rot,RF_siz,Div,False)
-bias = np.zeros([272])
+bias = np.zeros([136])
 gabor_dictionary = {}
 gabor_dictionary['gabors'] = gabor_array,bias
 
 f,x = gabor_dictionary['gabors']
-import ipdb; ipdb.set_trace()
 
 ## Save Dictionary ----------------------
 np.save('/Users/charlieholtz/Desktop/gabors/gabor_dictionary.npy', gabor_dictionary)
