@@ -10,6 +10,5 @@ Repository for gabor filter setup.
 
 * `parse_avg.py` creates the `averages.txt` file from the `parsed_data/` directory.
 
-# Functions:
-'gabor_final.py' creates a series of gabor filters (https://en.wikipedia.org/wiki/Gabor_filter). Gabor filters 
+* `gabor_final.py` creates a series of gabor filters (https://en.wikipedia.org/wiki/Gabor_filter). Gabor filters 
 are used as a proxy for simple V1 receptive fields. This code was adapted from David Mely, Serre Lab.
