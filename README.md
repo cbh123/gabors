@@ -6,6 +6,7 @@ Repository for gabor filter setup.
 
 * `parsed_avg/averages.txt` is in the format (image number : average strength)
 
+## functions:
 * `results_parser.py` takes the raw data and creates individual subject files (stored within parsed data/)
 
 * `parse_avg.py` creates the `averages.txt` file from the `parsed_data/` directory.
