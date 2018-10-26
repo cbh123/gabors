@@ -7,16 +7,22 @@ import ipdb
 import time
 from tqdm import tqdm
 
-
-# rot = np.array([90,-67.5,-45,-22.5,0,45,67.5])
-# RF_siz = sp.arange(33,67,2)
-# Div = sp.arange(4,3.15,-.05)
-
+# initialize degrees of rotation (mely et. al)
 rot = np.array([90,-67.5,-45,-22.5,0,22.5,45,67.5])
+
+# initialize receptive field size 
 RF_siz = sp.arange(33,67,2)
 Div = sp.arange(4,3.15,-.05)
 
 def create_gabor(rot,RF_siz,Div,plot,num=10):
+    """
+    this function creates a series of gabor filters
+    
+    @param rot: number rotations
+    @param RF_siz: receptive field size
+    @param Div: receptive field degree
+    @param num: interval of pixel size to plot
+    """
     count = 0
     numFilterSizes   = len(RF_siz)
     numSimpleFilters = len(rot)
@@ -99,13 +105,3 @@ f,x = gabor_dictionary['gabors']
 
 ## Save Dictionary ----------------------
 np.save('/Users/charlieholtz/Desktop/gabors/gabor_dictionary.npy', gabor_dictionary)
-
-## Test Dictionary
-#weights = tf.get_variable('weights', shape = [filter_height, filter_width, input_channels/groups, num_filters])
-
-
-
-## Load Dictionary From Save File ----------------------
-# b = np.load('/Users/charlieholtz/Desktop/hermann/Gabor Filters/gabor_dictionary.npy').item()
-# f,x = b['gabors']
-# print(f.shape)
