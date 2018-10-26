@@ -31,11 +31,10 @@ def create_gabor(rot,RF_siz,Div,plot,num=10):
     G      = 0.3
     phases = [0, np.pi/2]
 
-    # Initialize Filterbank
+    # initialize Filterbank
     alt_fb = np.zeros((65,65,1,272),dtype=np.float32)
 
-
-    # for k in tqdm(range(0,numFilterSizes-1)):
+    # loop through number of filter sizes
     for k in tqdm(range(1,numFilterSizes+1)):
         for r in tqdm(range(1,numSimpleFilters+1)):
 
@@ -90,9 +89,6 @@ def create_gabor(rot,RF_siz,Div,plot,num=10):
 
 
 
-
-## Test Plotting ----------------------
-#create_gabor(rot,RF_siz,Div)
 
 ## Create Dictionary ---------------
 gabor_array = create_gabor(rot,RF_siz,Div,False)
