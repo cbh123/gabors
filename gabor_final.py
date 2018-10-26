@@ -7,6 +7,16 @@ import ipdb
 import time
 from tqdm import tqdm
 
+"""
+The following code creates a series of 
+'gabor' filters at specified sizes. Gabor filters
+are used as a proxy for simple V1 cell receptive 
+fields (https://en.wikipedia.org/wiki/Gabor_filter). 
+This code was adapted from David Mely, Serre Lab by 
+Charlie Holtz '18 and used in his thesis.
+"""
+
+
 # initialize degrees of rotation (mely et. al)
 rot = np.array([90,-67.5,-45,-22.5,0,22.5,45,67.5])
 
@@ -31,7 +41,7 @@ def create_gabor(rot,RF_siz,Div,plot,num=10):
     G      = 0.3
     phases = [0, np.pi/2]
 
-    # initialize Filterbank
+    # initialize filterbank
     alt_fb = np.zeros((65,65,1,272),dtype=np.float32)
 
     # loop through number of filter sizes
